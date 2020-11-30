@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>VueTV</title>
+
+    <script src="https://vuetv.acmoore.co.uk/js/vue-bundle.js"></script>
+    <script src="app.js" defer></script>
+</head>
+
+<body>
+<div id="app">
+    <div>
+        <form v-on:submit.prevent="searchVideos">
+            <input type="text" placeholder="Search Video" v-model="search">
+            <button type="submit">Search</button>
+        </form>
+
+        <youtube ref="youtube" :video-id="video_id" :player-vars="playerVars"></youtube>
+
+        <nav>
+            <button @click="playVideo">play</button>
+            <button @click="pauseVideo">pause</button>
+        </nav>
+    </div>
+</div>
+</body>
+</html>
