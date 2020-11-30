@@ -6,25 +6,32 @@
 
     <title>VueTV</title>
 
+    <script src="https://unpkg.com/vue-select@latest"></script>
+    <link rel="stylesheet" href="https://unpkg.com/vue-select@latest/dist/vue-select.css">
+
     <script src="https://vuetv.acmoore.co.uk/js/vue-bundle.js"></script>
     <script src="app.js" defer></script>
 </head>
 
 <body>
-<div id="app">
-    <div>
-        <form v-on:submit.prevent="searchVideos">
-            <input type="text" placeholder="Search Video" v-model="search">
-            <button type="submit">Search</button>
-        </form>
+    <div id="app">
+        <div>
 
-        <youtube ref="youtube" :video-id="video_id" :player-vars="playerVars"></youtube>
+            <v-select 
+                label="title" 
+                :options="results" 
+                @search="searchVideos" 
+                :reduce="title => title.video_id"
+                @input="fetchVideo"
+            ></v-select>
 
-        <nav>
-            <button @click="playVideo">play</button>
-            <button @click="pauseVideo">pause</button>
-        </nav>
+            <youtube ref="youtube" :video-id="video_id" :player-vars="playerVars"></youtube>
+
+            <nav>
+                <button @click="playVideo">play</button>
+                <button @click="pauseVideo">pause</button>
+            </nav>
+        </div>
     </div>
-</div>
 </body>
 </html>
