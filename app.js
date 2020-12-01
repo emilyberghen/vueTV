@@ -11,7 +11,8 @@ new Vue({
 			},
 			results: [],
 			currentVideo: [],
-			queue: []
+			queue: [],
+			index: null
 		};
 	},
 
@@ -32,6 +33,9 @@ new Vue({
 	},
 
 	methods: {
+
+		// video
+
 		searchVideos: function (search) {
 			var self = this;
 			var input = encodeURI(search);
@@ -60,6 +64,8 @@ new Vue({
 			this.player.pauseVideo();
 		},
 
+		// queue
+
 		addQueue: function () {
 			var queue = this.queue;
 			queue = queue.push(this.currentVideo);
@@ -71,10 +77,22 @@ new Vue({
 			var queue = this.queue;
 
 			if (index > -1) {
-			queue.splice(index, 1);
+				queue.splice(index, 1);
 			}
 
 			this.updateStorage();
+		},
+
+		skip: function () {
+			var queue = this.queue;
+			var index = queue.indexOf(this.currentVideo);
+			var queueLength = queue.length;
+			queueLength--;
+
+			if (index > -1 && index < queueLength) {
+				index++;
+				this.fetchVideo(queue[index]);
+			}
 		},
 
 		updateStorage: function () {
