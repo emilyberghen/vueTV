@@ -1,16 +1,17 @@
-Vue.component('v-select', VueSelect.VueSelect);
+var vm = Vue.component('v-select', VueSelect.VueSelect);
 
 new Vue({
 	el: '#app',
 
 	data: function () {
 		return {
-			search: null,
 			video_id: null,
 			playerVars: {
 				autoplay: 1
 			},
-			results: []
+			results: [],
+			currentVideo: [],
+			queue: []
 		};
 	},
 
@@ -21,7 +22,7 @@ new Vue({
 	},
 
 	methods: {
-		searchVideos: function(search) {
+		searchVideos: function (search) {
 			var self = this;
 			var input = encodeURI(search);
 
@@ -33,9 +34,9 @@ new Vue({
 			}
 		},
 
-		fetchVideo: function(value) {
-			var self = this;
-			self.loadVideo(value);
+		fetchVideo: function (value) {
+			this.video_id = value.video_id;
+			this.currentVideo = value;
 		},
 
 		loadVideo: function (video_id) {
@@ -49,6 +50,13 @@ new Vue({
 		pauseVideo: function () {
 			this.player.pauseVideo();
 		},
+
+		addQueue: function () {
+			var queue = this.queue;
+			queue = queue.push(this.currentVideo);
+
+			console.log(this.queue);
+		}
 
 	}
 });

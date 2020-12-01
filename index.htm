@@ -20,8 +20,7 @@
             <v-select 
                 label="title" 
                 :options="results" 
-                @search="searchVideos" 
-                :reduce="title => title.video_id"
+                @search="searchVideos"
                 @input="fetchVideo"
             ></v-select>
 
@@ -30,7 +29,19 @@
             <nav>
                 <button @click="playVideo">play</button>
                 <button @click="pauseVideo">pause</button>
+                <button @click="addQueue">Add to queue</button>
             </nav>
+
+            <div>
+                <ul>
+                  <li v-for="qVideo in queue">
+                    <a href="" v-on:click.prevent="loadVideo">
+                        <img :src="qVideo.image" :alt="qVideo.title">
+                        {{ qVideo.title }}
+                    </a>
+                  </li>
+                </ul>
+              </div>
         </div>
     </div>
 </body>
