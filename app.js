@@ -21,6 +21,16 @@ new Vue({
 		}
 	},
 
+	mounted() {
+		if (localStorage.getItem('queue')) {
+			try {
+			  this.queue = JSON.parse(localStorage.getItem('queue'));
+			} catch(e) {
+			  localStorage.removeItem('queue');
+			}
+		  }
+	},
+
 	methods: {
 		searchVideos: function (search) {
 			var self = this;
@@ -53,6 +63,8 @@ new Vue({
 		addQueue: function () {
 			var queue = this.queue;
 			queue = queue.push(this.currentVideo);
+
+			this.updateStorage();
 		},
 
 		removeQueue: function (index) {
@@ -61,6 +73,13 @@ new Vue({
 			if (index > -1) {
 			queue.splice(index, 1);
 			}
+
+			this.updateStorage();
+		},
+
+		updateStorage: function () {
+			const parsed = JSON.stringify(this.queue);
+      		localStorage.setItem('queue', parsed);
 		}
 
 	}
