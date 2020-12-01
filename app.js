@@ -27,7 +27,6 @@ new Vue({
 			var input = encodeURI(search);
 
 			if(input) {
-				console.log(input);
 				axios.get('https://vuetv.acmoore.co.uk/search/'+input).then(function (response) {
 					self.results = response.data;
 				});
@@ -54,8 +53,14 @@ new Vue({
 		addQueue: function () {
 			var queue = this.queue;
 			queue = queue.push(this.currentVideo);
+		},
 
-			console.log(this.queue);
+		removeQueue: function (index) {
+			var queue = this.queue;
+
+			if (index > -1) {
+			queue.splice(index, 1);
+			}
 		}
 
 	}

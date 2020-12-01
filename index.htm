@@ -34,11 +34,12 @@
 
             <div>
                 <ul>
-                  <li v-for="qVideo in queue">
-                    <a href="" v-on:click.prevent="loadVideo">
-                        <img :src="qVideo.image" :alt="qVideo.title">
-                        {{ qVideo.title }}
+                  <li v-for="(queued, index) in queue">
+                    <a href="" v-on:click.prevent="loadVideo(queued.video_id)">
+                        <img :src="queued.image" :alt="queued.title">
+                        {{ queued.title }}
                     </a>
+                    <button @click="removeQueue(index)">Remove from queue</button>
                   </li>
                 </ul>
               </div>
