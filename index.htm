@@ -49,11 +49,19 @@
 
                     <nav>
                         <div>
-                            <a class="button" @click="playVideo">play</a>
-                            <a class="button" @click="pauseVideo">pause</a>
-                            <a class="button" @click="next">skip</a>
+                            <a class="button play" @click="playVideo">
+                                <span>play</span>
+                            </a>
+                            <a class="button pause" @click="pauseVideo">
+                                <span>pause</span>
+                            </a>
+                            <a class="button skip" @click="next">
+                                <span>skip</span>
+                            </a>
                         </div>
-                        <a class="button" @click="addQueue">add</a>
+                        <a class="button add" @click="addQueue">
+                            <span>add</span>
+                        </a>
                     </nav>
                 </div>
 
@@ -66,7 +74,9 @@
                                 <img :src="queued.image" :alt="queued.title">
                                 {{ queued.title }}
                             </a>
-                            <a class="button" @click="removeQueue(index)">remove</a>
+                            <a class="button remove" @click="removeQueue(index)">
+                                <span>remove</span>
+                            </a>
                         </li>
                         </ul>
                     </div>

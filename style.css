@@ -92,11 +92,43 @@ iframe {
 
 /* buttons */
 
-nav {
+nav, nav div{
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
     margin-top: 10px;
+}
+
+nav div .button {
+    margin-right: 5px;
+}
+
+.button {
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: block;
+    width: 25px;
+    height: 25px;
+}
+.button span {
+    display: none;
+}
+
+.button.play {  
+    background-image: url(img/playbutton.png);
+}
+.button.pause {  
+    background-image: url(img/pausebutton.png);
+}
+.button.skip {  
+    background-image: url(img/skipbutton.png);
+}
+.button.add {  
+    background-image: url(img/addbutton.png);
+}
+.button.remove {  
+    background-image: url(img/removebutton.png);
 }
 
 /* queue */
@@ -120,6 +152,7 @@ nav {
 .queue ul li a:first-of-type {
     display: flex;
     align-items: center;
+    width: 90%;
 }
 
 .queue ul li a img {
