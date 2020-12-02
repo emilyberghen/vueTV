@@ -6,6 +6,12 @@
 
     <title>VueTV</title>
 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {font-family: 'Montserrat', sans-serif;}
+    </style>
+
     <script src="https://unpkg.com/vue-select@latest"></script>
     <link rel="stylesheet" href="https://unpkg.com/vue-select@latest/dist/vue-select.css">
 
@@ -24,7 +30,11 @@
                 @input="fetchVideo"
             ></v-select>
 
-            <youtube ref="youtube" :video-id="video_id" :player-vars="playerVars"></youtube>
+            <youtube 
+                ref="youtube"
+                :video-id="video_id"
+                :player-vars="playerVars"
+                @ended="next"></youtube>
 
             <nav>
                 <button @click="playVideo">play</button>
@@ -33,8 +43,8 @@
             </nav>
 
             <div>
-                <h2>Listen to your queue</h2>
-                <button @click="skip">Skip</button>
+                <h3>Your queue</h3>
+                <button @click="next">Skip</button>
                 <ul>
                   <li v-for="(queued, index) in queue">
                     <a :class="index" href="#" v-on:click.prevent="fetchVideo(queued)">

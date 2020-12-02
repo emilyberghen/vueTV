@@ -1,6 +1,6 @@
-var vm = Vue.component('v-select', VueSelect.VueSelect);
+Vue.component('v-select', VueSelect.VueSelect);
 
-new Vue({
+var vm = new Vue({
 	el: '#app',
 
 	data: function () {
@@ -26,6 +26,7 @@ new Vue({
 		if (localStorage.getItem('queue')) {
 			try {
 			  this.queue = JSON.parse(localStorage.getItem('queue'));
+			  this.video_id = this.queue[0].video_id;
 			} catch(e) {
 			  localStorage.removeItem('queue');
 			}
@@ -83,7 +84,7 @@ new Vue({
 			this.updateStorage();
 		},
 
-		skip: function () {
+		next: function () {
 			var queue = this.queue;
 			var index = queue.indexOf(this.currentVideo);
 			var queueLength = queue.length;
