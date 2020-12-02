@@ -10,6 +10,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {font-family: 'Montserrat', sans-serif;}
+        #vs1__combobox, #vs1__listbox {
+            border-radius: 20px;
+            transition: .5s ease-out;
+        }
+        .vs--open #vs1__combobox {
+            border-radius: 20px 20px 0 0;
+        }
+        .vs--open #vs1__listbox {
+            border-radius: 0 0 20px 20px;
+        }
+
+        .hidden{visibility: hidden;}
     </style>
 
     <script src="https://unpkg.com/vue-select@latest"></script>
@@ -30,30 +42,32 @@
                 @input="fetchVideo"
             ></v-select>
 
-            <youtube 
-                ref="youtube"
-                :video-id="video_id"
-                :player-vars="playerVars"
-                @ended="next"></youtube>
+            <div :class="{ hidden : visibility }">
+                <youtube 
+                    ref="youtube"
+                    :video-id="video_id"
+                    :player-vars="playerVars"
+                    @ended="next"></youtube>
 
-            <nav>
-                <button @click="playVideo">play</button>
-                <button @click="pauseVideo">pause</button>
-                <button @click="addQueue">Add to queue</button>
-            </nav>
+                <nav>
+                    <button @click="playVideo">play</button>
+                    <button @click="pauseVideo">pause</button>
+                    <button @click="addQueue">Add to queue</button>
+                </nav>
 
-            <div>
-                <h3>Your queue</h3>
-                <button @click="next">Skip</button>
-                <ul>
-                  <li v-for="(queued, index) in queue">
-                    <a :class="index" href="#" v-on:click.prevent="fetchVideo(queued)">
-                        <img :src="queued.image" :alt="queued.title">
-                        {{ queued.title }}
-                    </a>
-                    <button @click="removeQueue(index)">Remove from queue</button>
-                  </li>
-                </ul>
+                <div>
+                    <h3>Your queue</h3>
+                    <button @click="next">Skip</button>
+                    <ul>
+                    <li v-for="(queued, index) in queue">
+                        <a :class="index" href="#" v-on:click.prevent="fetchVideo(queued)">
+                            <img :src="queued.image" :alt="queued.title">
+                            {{ queued.title }}
+                        </a>
+                        <button @click="removeQueue(index)">Remove from queue</button>
+                    </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

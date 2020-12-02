@@ -12,7 +12,8 @@ var vm = new Vue({
 			results: [],
 			currentVideo: [],
 			queue: [],
-			index: null
+			index: null,
+			visibility: true
 		};
 	},
 
@@ -27,10 +28,11 @@ var vm = new Vue({
 			try {
 			  this.queue = JSON.parse(localStorage.getItem('queue'));
 			  this.video_id = this.queue[0].video_id;
+			  this.visibility = false;
 			} catch(e) {
 			  localStorage.removeItem('queue');
 			}
-		  }
+		}
 	},
 
 	methods: {
@@ -51,6 +53,7 @@ var vm = new Vue({
 		fetchVideo: function (value) {
 			this.video_id = value.video_id;
 			this.currentVideo = value;
+			this.visibility = false;
 		},
 
 		loadVideo: function (video_id) {
