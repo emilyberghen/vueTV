@@ -7,7 +7,8 @@ var vm = new Vue({
 		return {
 			video_id: null,
 			playerVars: {
-				autoplay: 1
+				autoplay: 1,
+				controls: 0
 			},
 			results: [],
 			currentVideo: [],
