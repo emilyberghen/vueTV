@@ -40,14 +40,15 @@
                 </div>
             </header>
 
-            <main :class="{ hidden : visibility }">
-                <div class="video container">
+            <main>
+                <div class="video container" :class="{ hidden : visibility }">
                     <h2>{{ currentVideo.title }}</h2>
                     <youtube 
                         ref="youtube"
                         :video-id="video_id"
                         :player-vars="playerVars"
-                        @ended="next"></youtube>
+                        @ended="next"
+                        ></youtube>
 
                     <nav>
                         <div>
@@ -78,7 +79,7 @@
                             class="desktop"
                         ></v-select>
 
-                        <ul>
+                        <ul :class="{ hidden : visibility }">
                             <h3>Queue</h3>
                             <li v-for="(queued, index) in queue">
                                 <a :class="index" href="#" v-on:click.prevent="fetchVideo(queued)">
