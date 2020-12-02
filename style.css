@@ -2,11 +2,14 @@ body {
     font-family: 'Montserrat', sans-serif;
     background-color: #1e1e1c;
     color: #F4F4EA;
+    font-size: 14px;
+    line-height: 1.2;
 }
 
 a {
     color: #F4F4EA;
     text-decoration: none;
+    cursor: pointer;
 }
 
 h2 {
@@ -34,6 +37,13 @@ ul {
 
 .hidden {
     visibility: hidden;
+}
+
+.mobile {
+    display: block;
+}
+.desktop {
+    display: none;
 }
 
 /* header */
@@ -64,23 +74,27 @@ header .container {
     width: 80%;
 }
 
-#vs1__combobox {
+#vs1__combobox,
+#vs2__combobox {
     background-image: url(img/searchicon.png);
     background-size: 20px;
     background-repeat: no-repeat;
     background-position: 95% 50%;
 }
 
-#vs1__combobox, #vs1__listbox {
+#vs1__combobox, #vs1__listbox,
+#vs2__combobox, #vs2__listbox {
     border-radius: 20px;
     transition: .5s ease-out;
     background-color: #F4F4EA;
     color: #1e1e1c;
 }
-.vs--open #vs1__combobox {
+.vs--open #vs1__combobox,
+.vs--open #vs2__combobox {
     border-radius: 20px 20px 0 0;
 }
-.vs--open #vs1__listbox {
+.vs--open #vs1__listbox,
+.vs--open #vs2__listbox {
     border-radius: 0 0 20px 20px;
 }
 .vs__actions, .vs__selected {
@@ -113,8 +127,8 @@ nav div .button {
     background-repeat: no-repeat;
     background-size: contain;
     display: block;
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
 }
 .button span {
     display: none;
@@ -153,14 +167,147 @@ nav div .button {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-top: 1px solid #F4F4EA;
+}
+.queue ul li:first-of-type {
+    border: none;
 }
 
 .queue ul li a:first-of-type {
     display: flex;
     align-items: center;
-    width: 90%;
+    width: 85%;
 }
 
 .queue ul li a img {
     margin-right: 10px;
+}
+
+@media (min-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+    
+    h3 {
+        font-size: 30px;
+    }
+    
+    .container {
+        margin: 50px 40px;
+    }
+
+    /* header */
+
+    #logo a {
+        background-image: url(img/Logo2.png);
+        width: 137px;
+        height: 40px;
+    }
+    
+    /* vue-select */
+
+    .v-select {
+        width: 75%;
+    }
+
+    #vs1__combobox {
+        background-position: 97% 50%;
+    }
+
+    /* video */
+
+    iframe {
+        height: 500px;
+        margin: 20px 0;
+    }
+
+    /* queue */
+
+    .queue ul li a img {
+        margin-right: 20px;
+    }
+}
+
+@media (min-width: 1200px) {
+    h2 {
+        font-size: 20px;
+        display: inline;
+    }
+    
+    h3 {
+        font-size: 40px;
+    }
+
+    .mobile {
+        display: none;
+    }
+    .desktop {
+        display: block;
+    }
+
+    /* header */
+
+    #logo a {
+        width: 150px;
+        height: 50px;
+    }
+    
+    /* vue-select */
+
+    .v-select {
+        width: 100%;
+        margin-bottom: 50px;
+    }
+
+    main {
+        width: calc(70% - 80px);
+    }
+
+    main .video {
+        width: 100%;
+    }
+
+    /* buttons */
+
+    .button {
+        width: 30px;
+        height: 30px;
+    }
+
+    /* queue */
+
+    .queue {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 30%;
+        padding: 0;
+        min-height: 100vh;
+    }
+
+    .queue ul li {
+        padding: 10px 0;
+    }
+
+    .queue ul li a img {
+        margin-right: 30px;
+    }
+}
+
+@media (min-width: 1700px) {
+    .container {
+        margin: 50px 100px;
+    }
+
+    main {
+        width: calc(70% - 200px);
+    }
+
+    iframe {
+        height: 700px;
+    }
 }

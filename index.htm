@@ -35,12 +35,13 @@
                         :options="results" 
                         @search="searchVideos"
                         @input="fetchVideo"
+                        class="mobile"
                     ></v-select>
                 </div>
             </header>
 
             <main :class="{ hidden : visibility }">
-                <div class="container">
+                <div class="video container">
                     <h2>{{ currentVideo.title }}</h2>
                     <youtube 
                         ref="youtube"
@@ -68,17 +69,26 @@
 
                 <div class="queue">
                     <div class="container">
-                        <h3>Queue</h3>
+
+                        <v-select 
+                            label="title" 
+                            :options="results" 
+                            @search="searchVideos"
+                            @input="fetchVideo"
+                            class="desktop"
+                        ></v-select>
+
                         <ul>
-                        <li v-for="(queued, index) in queue">
-                            <a :class="index" href="#" v-on:click.prevent="fetchVideo(queued)">
-                                <img :src="queued.image" :alt="queued.title">
-                                {{ queued.title }}
-                            </a>
-                            <a class="button remove" @click="removeQueue(index)">
-                                <span>remove</span>
-                            </a>
-                        </li>
+                            <h3>Queue</h3>
+                            <li v-for="(queued, index) in queue">
+                                <a :class="index" href="#" v-on:click.prevent="fetchVideo(queued)">
+                                    <img :src="queued.image" :alt="queued.title">
+                                    {{ queued.title }}
+                                </a>
+                                <a class="button remove" @click="removeQueue(index)">
+                                    <span>remove</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
