@@ -41,6 +41,7 @@
 
             <main :class="{ hidden : visibility }">
                 <div class="container">
+                    <h2>{{ currentVideo.title }}</h2>
                     <youtube 
                         ref="youtube"
                         :video-id="video_id"
