@@ -28,6 +28,7 @@ var vm = new Vue({
 			try {
 			  this.queue = JSON.parse(localStorage.getItem('queue'));
 			  this.video_id = this.queue[0].video_id;
+			  this.currentVideo = this.queue[0];
 			  this.visibility = false;
 			} catch(e) {
 			  localStorage.removeItem('queue');
