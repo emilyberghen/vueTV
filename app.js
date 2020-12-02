@@ -7,8 +7,7 @@ var vm = new Vue({
 		return {
 			video_id: null,
 			playerVars: {
-				autoplay: 1,
-				controls: 0
+				autoplay: 1
 			},
 			results: [],
 			currentVideo: [],
@@ -96,7 +95,7 @@ var vm = new Vue({
 			queueLength--;
 
 			if (index > -1 && index < queueLength) {
-				index++;
+				this.removeQueue(index);
 				this.fetchVideo(queue[index]);
 			}
 		},
