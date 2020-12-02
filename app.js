@@ -97,6 +97,11 @@ var vm = new Vue({
 			if (index > -1 && index < queueLength) {
 				this.removeQueue(index);
 				this.fetchVideo(queue[index]);
+			} else if(index == -1) {
+				this.fetchVideo(queue[0]);
+			} else if(index == queueLength) {
+				this.removeQueue("0");
+				this.player.stopVideo();
 			}
 		},
 
