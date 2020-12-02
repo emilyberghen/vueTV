@@ -62,6 +62,7 @@ header .container {
     display: block;
     width: 35px;
     height: 35px;
+    transition: .4s;
 }
 
 #logo span {
@@ -134,7 +135,7 @@ nav div .button {
     transition: .4s;
 }
 
-.button:hover {
+.button:hover, #logo a:hover {
     transform: scale(1.1);
 }
 
@@ -164,6 +165,10 @@ nav div .button {
     background: #000;
     padding: 20px 0;
     width: 100%;
+}
+
+.hidden~.queue {
+    background: transparent;
 }
 
 .queue h3 {
@@ -295,6 +300,10 @@ nav div .button {
         width: 30%;
         padding: 0;
         min-height: 100vh;
+    }
+
+    .hidden~.queue {
+        background: #000;
     }
 
     .queue ul li {
