@@ -141,6 +141,7 @@ nav div .button {
 .queue {
     background: #000;
     padding: 20px 0;
+    width: 100%;
 }
 
 .queue h3 {
