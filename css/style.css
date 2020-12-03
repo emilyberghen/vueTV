@@ -113,7 +113,7 @@ header .container {
     background-color: #F4F4EA;
     color: #1e1e1c;
     padding-left: 5px;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 .vs--open #vs1__combobox,
 .vs--open #vs2__combobox {
@@ -262,6 +262,13 @@ nav div .button {
         margin: 20px 0;
     }
 
+    /* buttons */
+
+    .button.add {  
+        background-image: url(../img/addbutton2.png);
+        width: 105px;
+    }
+
     /* queue */
 
     .queue ul li a ../img {
@@ -320,6 +327,10 @@ nav div .button {
     .button {
         width: 30px;
         height: 30px;
+    }
+    .button.add {  
+        background-image: url(../img/addbutton2.png);
+        width: 79px;
     }
 
     /* queue */
