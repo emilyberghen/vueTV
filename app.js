@@ -97,12 +97,12 @@ var vm = new Vue({
 			if (index > -1 && index < queueLength) {
 				this.removeQueue(index);
 				this.fetchVideo(queue[index]);
-			} else if(index == -1) {
-				this.fetchVideo(queue[0]);
-			} else if(index == queueLength) {
+			} else if(index == queueLength && index == 1) {
 				this.removeQueue("0");
 				this.player.stopVideo();
-			}
+			} else if(queueLength > -1) {
+				this.fetchVideo(queue[0]);
+			} 
 		},
 
 		updateStorage: function () {
