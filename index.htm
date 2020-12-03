@@ -47,6 +47,8 @@
                             :video-id="video_id"
                             :player-vars="playerVars"
                             @ended="next"
+                            @playing="playing"
+                            @paused="paused"
                         ></youtube>
                     </div>
 

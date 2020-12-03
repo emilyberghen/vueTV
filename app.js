@@ -12,7 +12,8 @@ var vm = new Vue({
 			currentVideo: [],
 			queue: [],
 			index: null,
-			visibility: true
+			visibility: true,
+			isPlaying: false
 		};
 	},
 
@@ -40,9 +41,9 @@ var vm = new Vue({
 		searchVideos: _.debounce(function () {
 			var self = this;
 			var input = encodeURI(this.input);
-
+// +'%20VEVO'
 			if(input) {
-				axios.get('https://vuetv.acmoore.co.uk/search/'+input+'%20VEVO').then(function (response) {
+				axios.get('https://vuetv.acmoore.co.uk/search/'+input).then(function (response) {
 					if(response.data.length > 0) {
 						self.results = response.data;
 						console.log(self.results);
@@ -54,16 +55,29 @@ var vm = new Vue({
 		}, 500),
 
 		fetchVideo: function (value) {
-			this.video_id = value.video_id;
-			this.currentVideo = value;
-			this.visibility = false;
+			if(!this.isPlaying){
+				this.video_id = value.video_id;
+				this.currentVideo = value;
+				this.visibility = false;
+			} else {
+				this.currentVideo = value;
+				this.addQueue();
+			}
+
 			this.results = [];
 			this.input = '';
-			console.log(this.video_id);
 		},
 
 		loadVideo: function (video_id) {
 			this.player.loadVideoById(video_id);
+		},
+
+		playing: function () { 
+			this.isPlaying = true;
+		},
+
+		paused: function () { 
+			this.isPlaying = false;
 		},
 
 		playVideo: function () {
@@ -92,6 +106,8 @@ var vm = new Vue({
 		},
 
 		next: function () {
+			this.isPlaying = false;
+
 			var queue = this.queue;
 			var index = queue.indexOf(this.currentVideo);
 			var queueLength = queue.length;
