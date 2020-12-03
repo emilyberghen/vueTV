@@ -33,6 +33,12 @@ ul {
     list-style-type: none;
 }
 
+input {
+    font-family: 'Montserrat', sans-serif;
+    color: #1e1e1c;
+    font-size: 14px;
+}
+
 .container {
     margin: 30px 20px;
 }

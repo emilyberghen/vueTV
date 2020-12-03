@@ -43,8 +43,12 @@ var vm = new Vue({
 
 			if(input) {
 				axios.get('https://vuetv.acmoore.co.uk/search/'+input).then(function (response) {
-					self.results = response.data;
-					console.log(self.results);
+					if(response.data.length > 0) {
+						self.results = response.data;
+						console.log(self.results);
+					} else {
+						self.results = [];
+					}
 				});
 			}
 		},
