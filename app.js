@@ -41,9 +41,9 @@ var vm = new Vue({
 		searchVideos: _.debounce(function () {
 			var self = this;
 			var input = encodeURI(this.input);
-// +'%20VEVO'
+ 
 			if(input) {
-				axios.get('https://vuetv.acmoore.co.uk/search/'+input).then(function (response) {
+				axios.get('https://vuetv.acmoore.co.uk/search/'+input+'%20VEVO').then(function (response) {
 					if(response.data.length > 0) {
 						self.results = response.data;
 						console.log(self.results);
@@ -124,9 +124,9 @@ var vm = new Vue({
 			} 
 		},
 
-		handleBlur: function () {
+		handleBlur: _.debounce(function () {
 			this.results = [];
-		},
+		}, 300),
 
 		updateStorage: function () {
 			const parsed = JSON.stringify(this.queue);
