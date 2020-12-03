@@ -41,14 +41,18 @@
             </header>
 
             <main>
-                <div class="video container" :class="{ hidden : visibility }">
+                <div class="video container">
                     <h2>{{ currentVideo.title }}</h2>
-                    <youtube 
-                        ref="youtube"
-                        :video-id="video_id"
-                        :player-vars="playerVars"
-                        @ended="next"
+                    <div :class="{ hidden : visibility }">
+                        <youtube 
+                            ref="youtube"
+                            :video-id="video_id"
+                            :player-vars="playerVars"
+                            @ended="next"
                         ></youtube>
+                    </div>
+
+                    <div id="placeholder"></div>
 
                     <nav>
                         <div>
@@ -67,6 +71,8 @@
                         </a>
                     </nav>
                 </div>
+
+                <div :class="{ hidden : visibility }"></div>
 
                 <div class="queue">
                     <div class="container">
