@@ -13,9 +13,6 @@
     <meta name="msapplication-TileColor" content="#1e1e1c">
     <meta name="theme-color" content="#ffffff">
 
-    <script src="https://unpkg.com/vue-select@latest"></script>
-    <link rel="stylesheet" href="https://unpkg.com/vue-select@latest/dist/vue-select.css">
-
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -36,14 +33,6 @@
                             <span>vuetube</span>
                         </a>
                     </h1>
-
-                    <v-select 
-                        label="title" 
-                        :options="results" 
-                        @search="searchVideos"
-                        @input="fetchVideo"
-                        class="mobile"
-                    ></v-select>
                 </div>
             </header>
 
@@ -81,18 +70,29 @@
 
                 <div :class="{ hidden : visibility }"></div>
 
-                <div class="queue">
+                <div class="background">
                     <div class="container">
 
-                        <v-select 
-                            label="title" 
-                            :options="results" 
-                            @search="searchVideos"
-                            @input="fetchVideo"
-                            class="desktop"
-                        ></v-select>
+                        <div class="dropdown">
 
-                        <ul :class="{ hidden : visibility }">
+                          <input 
+                            v-model="input"
+                            class="dropdown-input"
+                            placeholder="Find music video"
+                            @input="searchVideos"
+                          />
+
+                          <ul class="dropdown-list">
+                            <li v-for="result in results" :key="result.video_id" class="dropdown-item">
+                                <a :class="index" href="#" v-on:click.prevent="fetchVideo(result)">
+                                    {{ result.title }}
+                                </a> 
+                            </li>
+                          </ul>
+
+                        </div>
+
+                        <ul :class="{ hidden : visibility }" class="queue">
                             <h3>Queue</h3>
                             <li v-for="(queued, index) in queue">
                                 <a :class="index" href="#" v-on:click.prevent="fetchVideo(queued)">
