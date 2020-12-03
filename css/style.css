@@ -53,7 +53,7 @@ ul {
 
 #placeholder {
     display: none;
-    background-image: url(img/placeholder.jpg);
+    background-image: url(../img/placeholder.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -69,7 +69,7 @@ header .container {
 }
 
 #logo a {
-    background-image: url(img/Logo1.png);
+    background-image: url(../img/Logo1.png);
     background-repeat: no-repeat;
     background-size: contain;
     display: block;
@@ -90,7 +90,7 @@ header .container {
 
 #vs1__combobox,
 #vs2__combobox {
-    background-image: url(img/searchicon.png);
+    background-image: url(../img/searchicon.png);
     background-size: 20px;
     background-repeat: no-repeat;
     background-position: 95% 50%;
@@ -157,19 +157,19 @@ nav div .button {
 }
 
 .button.play {  
-    background-image: url(img/playbutton.png);
+    background-image: url(../img/playbutton.png);
 }
 .button.pause {  
-    background-image: url(img/pausebutton.png);
+    background-image: url(../img/pausebutton.png);
 }
 .button.skip {  
-    background-image: url(img/skipbutton.png);
+    background-image: url(../img/skipbutton.png);
 }
 .button.add {  
-    background-image: url(img/addbutton.png);
+    background-image: url(../img/addbutton.png);
 }
 .button.remove {  
-    background-image: url(img/removebutton.png);
+    background-image: url(../img/removebutton.png);
 }
 
 /* queue */
@@ -230,7 +230,7 @@ nav div .button {
     /* header */
 
     #logo a {
-        background-image: url(img/Logo2.png);
+        background-image: url(../img/Logo2.png);
         width: 137px;
         height: 40px;
     }
@@ -254,7 +254,7 @@ nav div .button {
 
     /* queue */
 
-    .queue ul li a img {
+    .queue ul li a ../img {
         margin-right: 20px;
     }
 }
@@ -331,7 +331,7 @@ nav div .button {
         padding: 10px 0;
     }
 
-    .queue ul li a img {
+    .queue ul li a ../img {
         margin-right: 30px;
     }
 }
