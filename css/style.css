@@ -59,6 +59,16 @@ ul {
     background-position: center;
 }
 
+::-moz-selection { /* Code for Firefox */
+  color: #F4F4EA;
+  background: #FF277F;
+}
+  
+::selection {
+color: #F4F4EA;
+background: #FF277F;
+}
+
 /* header */
 
 header .container {
