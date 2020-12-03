@@ -325,9 +325,7 @@ ul.queue li a img {
     /* search */
 
     .dropdown {  
-        position: static;
-        width: 100%;
-        margin-bottom: 50px;
+        width: calc(100% - 80px);
     }
 
     main {
@@ -371,6 +369,10 @@ ul.queue li a img {
         background: #000;
     }
 
+    ul.queue {
+        padding-top: 86px;
+    }
+
     ul.queue li {
         padding: 10px 0;
     }
@@ -391,5 +393,11 @@ ul.queue li a img {
 
     iframe, #placeholder {
         height: 700px;
+    }
+
+    .dropdown {
+        top: 50px;
+        right: 100px;
+        width: calc(100% - 200px);
     }
 }

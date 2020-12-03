@@ -58,6 +58,7 @@ var vm = new Vue({
 			this.currentVideo = value;
 			this.visibility = false;
 			this.results = [];
+			this.input = '';
 		},
 
 		loadVideo: function (video_id) {
