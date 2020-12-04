@@ -89,7 +89,7 @@
 
                           <ul class="dropdown-list">
                             <li v-for="result in results" :key="result.video_id" class="dropdown-item">
-                                <a :class="index" href="#" v-on:click.prevent="fetchVideo(result)">
+                                <a :class="index" href="#" v-on:click.prevent="handlePlaying(result)">
                                     {{ result.title }}
                                 </a> 
                             </li>

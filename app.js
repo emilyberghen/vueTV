@@ -43,7 +43,7 @@ var vm = new Vue({
 			var input = encodeURI(this.input);
  
 			if(input) {
-				axios.get('https://vuetv.acmoore.co.uk/search/'+input+'%20VEVO').then(function (response) {
+				axios.get('https://vuetv.acmoore.co.uk/search/'+input).then(function (response) {
 					if(response.data.length > 0) {
 						self.results = response.data;
 						console.log(self.results);
@@ -55,15 +55,9 @@ var vm = new Vue({
 		}, 500),
 
 		fetchVideo: function (value) {
-			if(!this.isPlaying){
-				this.video_id = value.video_id;
-				this.currentVideo = value;
-				this.visibility = false;
-			} else {
-				this.currentVideo = value;
-				this.addQueue();
-			}
-
+			this.video_id = value.video_id;
+			this.currentVideo = value;
+			this.visibility = false;
 			this.results = [];
 			this.input = '';
 		},
@@ -78,6 +72,15 @@ var vm = new Vue({
 
 		paused: function () { 
 			this.isPlaying = false;
+		},
+
+		handlePlaying: function (value) {
+			if(!this.isPlaying){
+				this.fetchVideo(value);
+			} else {
+				this.currentVideo = value;
+				this.addQueue();
+			}
 		},
 
 		playVideo: function () {
