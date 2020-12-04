@@ -43,7 +43,7 @@ var vm = new Vue({
 			var input = encodeURI(this.input);
  
 			if(input) {
-				axios.get('https://vuetv.acmoore.co.uk/search/'+input).then(function (response) {
+				axios.get('https://vuetv.acmoore.co.uk/search/'+input+'%20VEVO').then(function (response) {
 					if(response.data.length > 0) {
 						self.results = response.data;
 						console.log(self.results);
@@ -80,6 +80,8 @@ var vm = new Vue({
 			} else {
 				this.currentVideo = value;
 				this.addQueue();
+				this.results = [];
+				this.input = '';
 			}
 		},
 
