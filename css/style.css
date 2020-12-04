@@ -147,6 +147,10 @@ header .container {
     color: #F4F4EA;
 }
 
+.dropdown ul li:last-child a {
+    border-radius: 0 0 20px 20px;
+}
+
 /* video */
 
 iframe, #placeholder {
